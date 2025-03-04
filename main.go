@@ -56,7 +56,7 @@ func resolveURL(base, relative string) string {
 }
 
 func main() {
-	url := "https://www.rsravenna.org/formazione" // Change this to the target URL
+	url := "https://www.example.com" // Change this to the target URL
 	folder := "images"
 	os.MkdirAll(folder, os.ModePerm)
 	counter := 0
