@@ -56,7 +56,12 @@ func resolveURL(base, relative string) string {
 }
 
 func main() {
-	url := "https://www.example.com" // Change this to the target URL
+	if len(os.Args) < 2 {
+		fmt.Println("Usage: go run main.go <URL>")
+		os.Exit(1)
+	}
+
+	url := os.Args[1]
 	folder := "images"
 	os.MkdirAll(folder, os.ModePerm)
 	counter := 0
@@ -111,8 +116,8 @@ func main() {
 
 	// Download all images
 	for imgURL := range imageURLs {
-		fmt.Println("Downloading: ", imgURL)
-		counter = counter + 1
+		fmt.Println("Downloading:", imgURL)
+		counter++
 		if err := downloadImage(imgURL, folder); err != nil {
 			fmt.Println("Error downloading:", imgURL, err)
 		}
